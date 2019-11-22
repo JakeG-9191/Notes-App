@@ -1,18 +1,22 @@
 let newItem = document.getElementById("new-note");
 
-let noteNum = 0;
+let allNotes = ["k", "l", "m"]
 
-myNotes = () => {
-    for (let i = 0; i < 25; i++) {
-        noteNum = noteNum + i
-        noteNum.push(i)
-    }
+let totalNotes = 0
+
+calcNotes = () => { 
+    totalNotes = allNotes.length + 1;
+    pushNewNote();
+    addNewNote();
 }
 
-addNewNote = () => localStorage.setItem(noteNum, newItem.value);
+pushNewNote = () => {
+    allNotes.push(newItem.value)
+}
+
+addNewNote = () => localStorage.setItem(totalNotes , newItem.value)
 
 clearAll = () => localStorage.clear();
 
-
-document.getElementById("submit").onclick = () => {event.preventDefault(), addNewNote()}
-document.getElementById("remove-all").onclick = () => {clearAll()}
+document.getElementById("submit").onclick = () => { event.preventDefault(), calcNotes() }
+document.getElementById("remove-all").onclick = () => { clearAll() }
