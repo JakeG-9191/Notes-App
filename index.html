@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
     <title>Simple Notes</title>
 </head>
+
 <body>
     <h2>Welcome to The Simple Note Taker</h2>
     <h3>Use the sections below to add, edit and delete notes</h3>
     <h4>Please note, your notes will be preserved and available upon your return</h4>
-    <form>
-        <textarea id="new-note"> 
-
-        </textarea>
-        <button id="submit">Save Note</button>
-    </form>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">New Note</label>
+        <textarea class="form-control" id="new-note" rows="3" placeholder="Enter New Note"></textarea>
+    </div>
+    <button id="submit">Save Note</button>
     <button id="remove-all">Remove All Notes</button>
     <form>
         <h3>Your Previous Notes</h3>
@@ -23,4 +27,5 @@
     </form>
     <script src="app.js"></script>
 </body>
+
 </html>
