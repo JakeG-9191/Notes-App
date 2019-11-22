@@ -9,10 +9,15 @@ calcNotes = () => {
     pushNewNote();
     addNewNote();
     setNotes();
+    eraseText()
 }
 
 pushNewNote = () => {
     allNotes.push(newItem.value)
+}
+
+eraseText = () => {
+    document.getElementById("new-note").value = "";
 }
 
 addNewNote = () => localStorage.setItem(totalNotes , newItem.value)
