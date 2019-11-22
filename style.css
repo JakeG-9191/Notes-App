@@ -29,3 +29,12 @@ p {
     height: 12rem;
     margin-bottom: 5%;
 }
+
+button {
+    margin-left: 5%;
+}
+
+.app-button {
+    width: 5rem;
+    margin: 1% 10%;
+}

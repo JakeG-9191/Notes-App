@@ -47,7 +47,9 @@ setNotes = () => {
     let newOnScreen = document.createElement("p");
     newOnScreen.appendChild(document.createTextNode(myNotes));
     let button = document.createElement("button")
-    button.innerHTML = allNotes.length
+    button.className = "app-button btn-danger"
+    button.setAttribute("data-value", allNotes.length)
+    button.innerHTML = "Delete"
     newOnScreen.appendChild(button)
     onScreen.appendChild(newOnScreen)
 }
@@ -59,7 +61,9 @@ getAllNotes = () => {
         let newAllScreen = document.createElement("p");
         newAllScreen.appendChild(document.createTextNode(getAll));
         let button = document.createElement("button")
-        button.innerHTML = localStorage.key([i])
+        button.className = "app-button btn-danger"
+        button.setAttribute("data-value", i + 1)
+        button.innerHTML = "Delete"
         newAllScreen.appendChild(button)
         allScreen.appendChild(newAllScreen)
     }
