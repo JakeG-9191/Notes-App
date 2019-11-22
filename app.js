@@ -4,7 +4,7 @@ let allNotes = []
 
 let totalNotes = 0
 
-calcNotes = () => { 
+calcNotes = () => {
     totalNotes = allNotes.length + 1;
     pushNewNote();
     addNewNote();
@@ -27,7 +27,7 @@ eraseText = () => {
     document.getElementById("new-note").value = "";
 }
 
-addNewNote = () => localStorage.setItem(totalNotes , newItem.value)
+addNewNote = () => localStorage.setItem(totalNotes, newItem.value)
 
 clearAll = () => localStorage.clear();
 
@@ -38,6 +38,7 @@ clearClear = () => {
 
 document.getElementById("submit").onclick = () => { event.preventDefault(), calcNotes() }
 document.getElementById("remove-all").onclick = () => { clearClear() }
+document.getElementsByClassName("app-button").onclick = () => { deleteNote() }
 
 setNotes = () => {
     for (let i = 0; i < localStorage.length; i++) {
@@ -69,10 +70,15 @@ getAllNotes = () => {
     }
 }
 
+deleteNote = () => {
+    for (let i = 0; i < localStorage.length; i++) {
+        let itemDel = document.getElementsByClassName("app-button").getAttribute("data-value" + i)
+        console.log(itemDel)
+    }
+}
+
 pushOldNote();
 getAllNotes();
-
-
 
 
 // $("#crystal-color1").on("click", function () {
