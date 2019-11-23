@@ -1,3 +1,7 @@
+document.getElementById("all-notes").onclick = () => { deleteNote() };
+document.getElementById("submit").onclick = () => { event.preventDefault(), calcNotes() };
+document.getElementById("remove-all").onclick = () => { clearClear() };
+
 let newItem = document.getElementById("new-note");
 
 let allNotes = []
@@ -36,10 +40,6 @@ clearClear = () => {
     location.reload()
 }
 
-document.getElementById("submit").onclick = () => { event.preventDefault(), calcNotes() }
-document.getElementById("remove-all").onclick = () => { clearClear() }
-document.getElementsByClassName("app-button").onclick = () => { deleteNote() }
-
 setNotes = () => {
     for (let i = 0; i < localStorage.length; i++) {
         myNotes = localStorage.getItem([i + 1]);
@@ -48,7 +48,8 @@ setNotes = () => {
     let newOnScreen = document.createElement("p");
     newOnScreen.appendChild(document.createTextNode(myNotes));
     let button = document.createElement("button")
-    button.className = "app-button btn-danger"
+    button.id = "app-button"
+    button.className = "btn btn-danger"
     button.setAttribute("data-value", allNotes.length)
     button.innerHTML = "Delete"
     newOnScreen.appendChild(button)
@@ -62,7 +63,8 @@ getAllNotes = () => {
         let newAllScreen = document.createElement("p");
         newAllScreen.appendChild(document.createTextNode(getAll));
         let button = document.createElement("button")
-        button.className = "app-button btn-danger"
+        button.id = "app-button"
+        button.className = "btn btn-danger"
         button.setAttribute("data-value", i + 1)
         button.innerHTML = "Delete"
         newAllScreen.appendChild(button)
@@ -71,10 +73,8 @@ getAllNotes = () => {
 }
 
 deleteNote = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-        let itemDel = document.getElementsByClassName("app-button").getAttribute("data-value" + i)
-        console.log(itemDel)
-    }
+    let itemDel = document.getElementById("app-button").getAttribute("data-value")
+    console.log(itemDel)
 }
 
 pushOldNote();
