@@ -1,4 +1,3 @@
-document.getElementById("all-notes").onclick = () => { deleteNote() };
 document.getElementById("submit").onclick = () => { event.preventDefault(), calcNotes() };
 document.getElementById("remove-all").onclick = () => { clearClear() };
 
@@ -72,10 +71,10 @@ getAllNotes = () => {
     }
 }
 
-deleteNote = () => {
-    let itemDel = document.getElementById("app-button").getAttribute("data-value")
-    console.log(itemDel)
-}
+$("#all-notes").on("click", function() {
+    let test = ($(this).children().children())
+    console.log(test)
+})
 
 pushOldNote();
 getAllNotes();
