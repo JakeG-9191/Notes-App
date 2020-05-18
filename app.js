@@ -34,7 +34,7 @@ eraseText = () => {
   document.getElementById('new-note').value = '';
 };
 
-addNewNote = () => localStorage.setItem(totalNotes, newItem.value);
+addNewNote = () => localStorage.setItem(totalNotes, newItem.value || 0);
 
 clearAll = () => localStorage.clear();
 
@@ -44,12 +44,14 @@ clearClear = () => {
 };
 
 setNotes = () => {
+  let notesLength = localStorage.length;
   for (let i = 0; i < localStorage.length; i++) {
     myNotes = localStorage.getItem([i + 1]);
   }
   let onScreen = document.getElementById('all-notes');
   let newOnScreen = document.createElement('p');
-  newOnScreen.setAttribute('datavalue', allNotes.length);
+  // newOnScreen.setAttribute('datavalue', allNotes.length);
+  newOnScreen.setAttribute('datavalue', allNotes[notesLength]);
   newOnScreen.id = 'my-little-note';
   newOnScreen.appendChild(document.createTextNode(myNotes));
   let button = document.createElement('button');
@@ -79,14 +81,14 @@ getAllNotes = () => {
   }
 };
 
-deleteMyNote = () => {
-  let dv = newAllScreen.getAttribute('datavalue');
-  console.log(`Data value is ${dv}`);
-};
+// deleteMyNote = () => {
+//   let dv = newAllScreen.getAttribute('datavalue');
+//   console.log(`Data value is ${dv}`);
+// };
 
 pushOldNote();
 getAllNotes();
 
-document.getElementById('my-little-note').onclick = () => {
-  deleteMyNote();
-};
+// document.getElementById('my-little-note').onclick = () => {
+//   deleteMyNote();
+// };
