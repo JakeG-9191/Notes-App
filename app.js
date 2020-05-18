@@ -44,14 +44,12 @@ clearClear = () => {
 };
 
 setNotes = () => {
-  let notesLength = localStorage.length;
   for (let i = 0; i < localStorage.length; i++) {
     myNotes = localStorage.getItem([i + 1]);
   }
   let onScreen = document.getElementById('all-notes');
   let newOnScreen = document.createElement('p');
-  // newOnScreen.setAttribute('datavalue', allNotes.length);
-  newOnScreen.setAttribute('datavalue', allNotes[notesLength]);
+  newOnScreen.setAttribute('datavalue', allNotes.length);
   newOnScreen.id = 'my-little-note';
   newOnScreen.appendChild(document.createTextNode(myNotes));
   let button = document.createElement('button');
