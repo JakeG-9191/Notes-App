@@ -43,6 +43,12 @@ clearClear = () => {
   location.reload();
 };
 
+clearThisNote = (e) => {
+  let dv = button.getAttribute('data-value');
+  e.preventDefault();
+  console.log(`clicked ${dv}`);
+};
+
 setNotes = () => {
   for (let i = 0; i < localStorage.length; i++) {
     myNotes = localStorage.getItem([i + 1]);
@@ -55,7 +61,8 @@ setNotes = () => {
   let button = document.createElement('button');
   button.id = 'app-button';
   button.className = 'btn btn-danger';
-  //   button.setAttribute('data-value', allNotes.length);
+  button.setAttribute('data-value', allNotes.length);
+  button.onclick = clearThisNote;
   button.innerHTML = 'Delete';
   newOnScreen.appendChild(button);
   onScreen.appendChild(newOnScreen);
@@ -72,21 +79,12 @@ getAllNotes = () => {
     let button = document.createElement('button');
     button.id = 'app-button';
     button.className = 'btn btn-danger';
-    // button.setAttribute('data-value', i + 1);
+    button.setAttribute('data-value', i + 1);
     button.innerHTML = 'Delete';
     newAllScreen.appendChild(button);
     allScreen.appendChild(newAllScreen);
   }
 };
 
-// deleteMyNote = () => {
-//   let dv = newAllScreen.getAttribute('datavalue');
-//   console.log(`Data value is ${dv}`);
-// };
-
 pushOldNote();
 getAllNotes();
-
-// document.getElementById('my-little-note').onclick = () => {
-//   deleteMyNote();
-// };
