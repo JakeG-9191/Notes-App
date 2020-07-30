@@ -44,17 +44,12 @@ clearClear = () => {
   location.reload();
 };
 
-// clearThisNote = (num) => {
-//   console.log('ble');
+clearThisNote = () => {
+  console.log(allNotes[0]);
 
-//   localStorage.removeItem(num);
-//   location.reload();
-// };
-
-// let result = (clearThisNote = (n) => {
-//   console.log(n);
-//   clearThisNote(n);
-// });
+  // localStorage.removeItem(num);
+  // location.reload();
+};
 
 setNotes = () => {
   for (let i = 0; i < localStorage.length; i++) {
@@ -62,15 +57,13 @@ setNotes = () => {
   }
   let onScreen = document.getElementById('all-notes');
   let newOnScreen = document.createElement('p');
-  // newOnScreen.setAttribute('datavalue', allNotes.length);
-  // newOnScreen.setAttribute('value', allNotes.length);
   newOnScreen.id = 'my-little-note';
   newOnScreen.appendChild(document.createTextNode(myNotes));
   let button = document.createElement('button');
   button.id = `app-button`;
   button.className = 'btn btn-danger';
   button.setAttribute('value', allNotes.length);
-  // button.onclick = result;
+  button.onclick = clearThisNote;
   button.innerHTML = 'Delete';
   newOnScreen.appendChild(button);
   onScreen.appendChild(newOnScreen);
