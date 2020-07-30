@@ -1,5 +1,6 @@
 document.getElementById('submit').onclick = () => {
-  event.preventDefault(), calcNotes();
+  event.preventDefault();
+  calcNotes();
 };
 document.getElementById('remove-all').onclick = () => {
   clearClear();
@@ -34,7 +35,7 @@ eraseText = () => {
   document.getElementById('new-note').value = '';
 };
 
-addNewNote = () => localStorage.setItem(totalNotes, newItem.value || 0);
+addNewNote = () => localStorage.setItem(totalNotes, newItem.value || '');
 
 clearAll = () => localStorage.clear();
 
@@ -43,11 +44,17 @@ clearClear = () => {
   location.reload();
 };
 
-clearThisNote = (e) => {
-  let dv = button.getAttribute('data-value');
-  e.preventDefault();
-  console.log(`clicked ${dv}`);
-};
+// clearThisNote = (num) => {
+//   console.log('ble');
+
+//   localStorage.removeItem(num);
+//   location.reload();
+// };
+
+// let result = (clearThisNote = (n) => {
+//   console.log(n);
+//   clearThisNote(n);
+// });
 
 setNotes = () => {
   for (let i = 0; i < localStorage.length; i++) {
@@ -55,14 +62,15 @@ setNotes = () => {
   }
   let onScreen = document.getElementById('all-notes');
   let newOnScreen = document.createElement('p');
-  newOnScreen.setAttribute('datavalue', allNotes.length);
+  // newOnScreen.setAttribute('datavalue', allNotes.length);
+  // newOnScreen.setAttribute('value', allNotes.length);
   newOnScreen.id = 'my-little-note';
   newOnScreen.appendChild(document.createTextNode(myNotes));
   let button = document.createElement('button');
-  button.id = 'app-button';
+  button.id = `app-button`;
   button.className = 'btn btn-danger';
-  button.setAttribute('data-value', allNotes.length);
-  button.onclick = clearThisNote;
+  button.setAttribute('value', allNotes.length);
+  // button.onclick = result;
   button.innerHTML = 'Delete';
   newOnScreen.appendChild(button);
   onScreen.appendChild(newOnScreen);
@@ -80,6 +88,7 @@ getAllNotes = () => {
     button.id = 'app-button';
     button.className = 'btn btn-danger';
     button.setAttribute('data-value', i + 1);
+    // button.onclick = clearThisNote;
     button.innerHTML = 'Delete';
     newAllScreen.appendChild(button);
     allScreen.appendChild(newAllScreen);

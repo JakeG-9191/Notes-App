@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
     <title>Simple Notes</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container jumbotron">
-        <div class="row">
-            <div class="col-md-12 col-12 intro">
-                <h2>Welcome to The Simple Note Taker</h2>
-                <h3>Use the sections below to add and delete notes</h3>
-                <h4>Please note, your notes will be preserved and available upon your return</h4>
-            </div>
-            <div class="form-group col-md-6 col-12">
-                <h4>New Note</h4>
-                <textarea class="form-control" id="new-note" rows="3" placeholder="Enter New Note"></textarea>
-                <button class="btn btn-success" id="submit">Save Note</button>
-                <button class="btn btn-danger" id="remove-all">Remove All Notes</button>
-            </div>
-            <div class="previous-notes col-md-6 col-12">
-                <h4>Your Saved Notes</h4>
-                <span id="all-notes"></span>
-            </div>
+      <div class="row">
+        <div class="col-md-12 col-12 intro">
+          <h2>Welcome to The Simple Note Taker</h2>
+          <h3>Use the sections below to add and delete notes</h3>
+          <h4>
+            Please note, your notes will be preserved and available upon your
+            return
+          </h4>
         </div>
+        <div class="form-group col-md-6 col-12">
+          <h4>New Note</h4>
+          <textarea
+            class="form-control"
+            id="new-note"
+            rows="3"
+            placeholder="Enter New Note"
+          ></textarea>
+          <button class="btn btn-success" id="submit">Save Note</button>
+          <button class="btn btn-danger" id="remove-all">
+            Remove All Notes
+          </button>
+        </div>
+        <div class="previous-notes col-md-6 col-12">
+          <h4>Your Saved Notes</h4>
+          <span id="all-notes"></span>
+        </div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>
