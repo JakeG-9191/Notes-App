@@ -45,11 +45,18 @@ clearClear = () => {
 };
 
 clearThisNote = () => {
-  console.log(allNotes[0]);
-
-  // localStorage.removeItem(num);
-  // location.reload();
+  $('.btn-danger').on('click', function () {
+    var valueNum = $(this).attr('data-value');
+    console.log(valueNum);
+    localStorage.removeItem(parseInt(valueNum));
+    location.reload();
+  });
 };
+
+$('.btn-danger').on('click', function () {
+  var d = $(this).attr('data-value');
+  console.log(d);
+});
 
 setNotes = () => {
   for (let i = 0; i < localStorage.length; i++) {
@@ -57,13 +64,13 @@ setNotes = () => {
   }
   let onScreen = document.getElementById('all-notes');
   let newOnScreen = document.createElement('p');
-  newOnScreen.id = 'my-little-note';
+  newOnScreen.className = 'my-little-note';
   newOnScreen.appendChild(document.createTextNode(myNotes));
   let button = document.createElement('button');
-  button.id = `app-button`;
+  // button.id = `app-button`;
   button.className = 'btn btn-danger';
-  button.setAttribute('value', allNotes.length);
-  button.onclick = clearThisNote;
+  button.setAttribute('data-value', allNotes.length);
+  button.onclick = clearThisNote();
   button.innerHTML = 'Delete';
   newOnScreen.appendChild(button);
   onScreen.appendChild(newOnScreen);
@@ -74,14 +81,13 @@ getAllNotes = () => {
     getAll = localStorage.getItem([i + 1]);
     let allScreen = document.getElementById('all-notes');
     let newAllScreen = document.createElement('p');
-    newAllScreen.setAttribute('datavalue', i + 1);
-    newAllScreen.id = 'my-little-note';
+    newAllScreen.className = 'my-little-note';
     newAllScreen.appendChild(document.createTextNode(getAll));
     let button = document.createElement('button');
-    button.id = 'app-button';
+    // button.id = 'app-button';
     button.className = 'btn btn-danger';
     button.setAttribute('data-value', i + 1);
-    // button.onclick = clearThisNote;
+    button.onclick = clearThisNote();
     button.innerHTML = 'Delete';
     newAllScreen.appendChild(button);
     allScreen.appendChild(newAllScreen);
