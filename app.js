@@ -33,13 +33,15 @@ clearAll = () => {
   location.reload();
 };
 
-clearThisNote = () => {
-  $('.btn-danger').on('click', function () {
-    const valueNum = $(this).attr('data-value');
-    console.log(valueNum);
-    // allNotes.splice(valueNum, 1);
-  });
-};
+$('#all-notes').on(
+  'click',
+  'p.my-little-note > button.btn-danger',
+  function () {
+    let removedItem = $(this).attr('data-value');
+    allNotes.splice(removedItem, 1);
+    setNotes();
+  }
+);
 
 let noteTally;
 
@@ -51,12 +53,10 @@ setNotes = () => {
     let newOnScreen = document.createElement('p');
     newOnScreen.className = 'my-little-note';
     newOnScreen.appendChild(document.createTextNode(note));
-    console.log(note);
     let button = document.createElement('button');
     button.className = 'btn btn-danger';
     button.setAttribute('data-value', noteTally);
     button.innerHTML = 'Delete';
-    button.onclick = clearThisNote();
     newOnScreen.appendChild(button);
     onScreen.appendChild(newOnScreen);
     noteTally++;
@@ -74,7 +74,6 @@ getAllNotes = () => {
     button.className = 'btn btn-danger';
     button.setAttribute('data-value', i);
     button.innerHTML = 'Delete';
-    button.onclick = clearThisNote();
     newAllScreen.appendChild(button);
     allScreen.appendChild(newAllScreen);
   }
