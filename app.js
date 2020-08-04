@@ -47,12 +47,12 @@ clearThisNote = () => {
     console.log(valueNum);
     console.log(allNotes);
     // console.log(window.localStorage.getItem(window.localStorage.key(valueNum)));
-    // allNotes.splice(valueNum - 1, 1);
+    allNotes.splice(valueNum - 1, 1);
+    // getAllNotes();
     // setNotes();
     // localStorage.removeItem(parseInt(valueNum));
     // location.reload();
   });
-  // getAllNotes();
 };
 
 setNotes = () => {
@@ -75,11 +75,10 @@ setNotes = () => {
 
 getAllNotes = () => {
   for (let i = 1; i < allNotes.length; i++) {
-    getAll = allNotes[i];
     let allScreen = document.getElementById('all-notes');
     let newAllScreen = document.createElement('p');
     newAllScreen.className = 'my-little-note';
-    newAllScreen.appendChild(document.createTextNode(getAll));
+    newAllScreen.appendChild(document.createTextNode(allNotes[i]));
     let button = document.createElement('button');
     // button.id = 'app-button';
     button.className = 'btn btn-danger';
