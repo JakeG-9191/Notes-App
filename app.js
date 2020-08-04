@@ -23,7 +23,7 @@ calcNotes = () => {
 
 pushNewNote = () => {
   allNotes.push(newItem.value);
-  localStorage.setItem(allNotes.length, allNotes);
+  localStorage.setItem(1, allNotes);
   eraseText();
 };
 
@@ -47,7 +47,7 @@ clearThisNote = () => {
     console.log(valueNum);
     console.log(allNotes);
     // console.log(window.localStorage.getItem(window.localStorage.key(valueNum)));
-    allNotes.splice(valueNum - 1, 1);
+    // allNotes.splice(valueNum - 1, 1);
     // getAllNotes();
     // setNotes();
     // localStorage.removeItem(parseInt(valueNum));
@@ -74,7 +74,9 @@ setNotes = () => {
 };
 
 getAllNotes = () => {
-  for (let i = 1; i < allNotes.length; i++) {
+  allNotes = localStorage.getItem(1).split(',');
+  console.log(allNotes[0]);
+  for (let i = 0; i < allNotes.length; i++) {
     let allScreen = document.getElementById('all-notes');
     let newAllScreen = document.createElement('p');
     newAllScreen.className = 'my-little-note';
@@ -89,3 +91,5 @@ getAllNotes = () => {
     allScreen.appendChild(newAllScreen);
   }
 };
+
+getAllNotes();
