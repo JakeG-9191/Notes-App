@@ -18,9 +18,11 @@ calcNotes = () => {
 };
 
 pushNewNote = () => {
-  allNotes.push(newItem.value);
-  localStorage.setItem(1, allNotes);
-  eraseText();
+  if (newItem.value != '') {
+    allNotes.push(newItem.value);
+    localStorage.setItem(1, allNotes);
+    eraseText();
+  }
 };
 
 eraseText = () => {
@@ -61,6 +63,7 @@ setNotes = () => {
     onScreen.appendChild(newOnScreen);
     noteTally++;
   });
+  localStorage.setItem(1, allNotes);
 };
 
 getAllNotes = () => {
