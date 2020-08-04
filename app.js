@@ -2,8 +2,9 @@ document.getElementById('submit').onclick = () => {
   event.preventDefault();
   calcNotes();
 };
+
 document.getElementById('remove-all').onclick = () => {
-  clearClear();
+  clearAll();
 };
 
 let newItem = document.getElementById('new-note');
@@ -15,19 +16,18 @@ let totalNotes = 0;
 calcNotes = () => {
   totalNotes = allNotes.length + 1;
   pushNewNote();
-  addNewNote();
   setNotes();
   eraseText();
+  pushOldNote();
 };
 
 pushNewNote = () => {
   allNotes.push(newItem.value);
+  localStorage.setItem(allNotes.length, allNotes);
+  eraseText();
 };
 
 pushOldNote = () => {
-  for (let i = 0; i < localStorage.length; i++) {
-    allNotes.push(localStorage.getItem[i]);
-  }
   console.log(allNotes.length);
 };
 
@@ -35,12 +35,9 @@ eraseText = () => {
   document.getElementById('new-note').value = '';
 };
 
-addNewNote = () => localStorage.setItem(totalNotes, newItem.value || '');
-
-clearAll = () => localStorage.clear();
-
-clearClear = () => {
-  clearAll();
+clearAll = () => {
+  localStorage.clear();
+  allNotes.length = 0;
   location.reload();
 };
 
@@ -48,17 +45,19 @@ clearThisNote = () => {
   $('.btn-danger').on('click', function () {
     var valueNum = $(this).attr('data-value');
     console.log(valueNum);
+    console.log(allNotes);
     // console.log(window.localStorage.getItem(window.localStorage.key(valueNum)));
-    allNotes.splice(valueNum - 1, 1);
+    // allNotes.splice(valueNum - 1, 1);
+    // setNotes();
     // localStorage.removeItem(parseInt(valueNum));
     // location.reload();
-    getAllNotes();
   });
+  // getAllNotes();
 };
 
 setNotes = () => {
-  for (let i = 0; i < localStorage.length; i++) {
-    myNotes = localStorage.getItem([i + 1]);
+  for (let i = 0; i < allNotes.length; i++) {
+    myNotes = allNotes[i];
   }
   let onScreen = document.getElementById('all-notes');
   let newOnScreen = document.createElement('p');
@@ -75,8 +74,8 @@ setNotes = () => {
 };
 
 getAllNotes = () => {
-  for (let i = 1; i < localStorage.length; i++) {
-    getAll = localStorage.getItem([i]);
+  for (let i = 1; i < allNotes.length; i++) {
+    getAll = allNotes[i];
     let allScreen = document.getElementById('all-notes');
     let newAllScreen = document.createElement('p');
     newAllScreen.className = 'my-little-note';
@@ -91,6 +90,3 @@ getAllNotes = () => {
     allScreen.appendChild(newAllScreen);
   }
 };
-
-pushOldNote();
-getAllNotes();
