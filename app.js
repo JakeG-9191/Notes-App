@@ -48,15 +48,13 @@ clearThisNote = () => {
   $('.btn-danger').on('click', function () {
     var valueNum = $(this).attr('data-value');
     console.log(valueNum);
-    localStorage.removeItem(parseInt(valueNum));
-    location.reload();
+    // console.log(window.localStorage.getItem(window.localStorage.key(valueNum)));
+    allNotes.splice(valueNum - 1, 1);
+    // localStorage.removeItem(parseInt(valueNum));
+    // location.reload();
+    getAllNotes();
   });
 };
-
-$('.btn-danger').on('click', function () {
-  var d = $(this).attr('data-value');
-  console.log(d);
-});
 
 setNotes = () => {
   for (let i = 0; i < localStorage.length; i++) {
@@ -67,7 +65,7 @@ setNotes = () => {
   newOnScreen.className = 'my-little-note';
   newOnScreen.appendChild(document.createTextNode(myNotes));
   let button = document.createElement('button');
-  // button.id = `app-button`;
+  // button.id = `app-button-${localStorage.length}`;
   button.className = 'btn btn-danger';
   button.setAttribute('data-value', allNotes.length);
   button.onclick = clearThisNote();
@@ -77,8 +75,8 @@ setNotes = () => {
 };
 
 getAllNotes = () => {
-  for (let i = 0; i < localStorage.length; i++) {
-    getAll = localStorage.getItem([i + 1]);
+  for (let i = 1; i < localStorage.length; i++) {
+    getAll = localStorage.getItem([i]);
     let allScreen = document.getElementById('all-notes');
     let newAllScreen = document.createElement('p');
     newAllScreen.className = 'my-little-note';
@@ -86,7 +84,7 @@ getAllNotes = () => {
     let button = document.createElement('button');
     // button.id = 'app-button';
     button.className = 'btn btn-danger';
-    button.setAttribute('data-value', i + 1);
+    button.setAttribute('data-value', i);
     button.onclick = clearThisNote();
     button.innerHTML = 'Delete';
     newAllScreen.appendChild(button);
