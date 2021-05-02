@@ -1,7 +1,16 @@
-document.getElementById('submit').onclick = () => {
-  event.preventDefault();
+document.getElementById('submit').onclick = (e) => {
+  e.preventDefault();
   calcNotes();
 };
+
+document.getElementById('new-note').onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.code || e.key;
+  if (keyCode === 'Enter'){
+    e.preventDefault();
+    calcNotes();
+  }
+}
 
 document.getElementById('remove-all').onclick = () => {
   clearAll();
@@ -11,13 +20,13 @@ let newItem = document.getElementById('new-note');
 
 let allNotes = [];
 
-calcNotes = () => {
+const calcNotes = () => {
   pushNewNote();
   setNotes();
   eraseText();
 };
 
-pushNewNote = () => {
+const pushNewNote = () => {
   if (newItem.value != '') {
     allNotes.push(newItem.value);
     localStorage.setItem(1, allNotes);
@@ -25,11 +34,11 @@ pushNewNote = () => {
   }
 };
 
-eraseText = () => {
+const eraseText = () => {
   document.getElementById('new-note').value = '';
 };
 
-clearAll = () => {
+const clearAll = () => {
   localStorage.clear();
   allNotes.length = 0;
   location.reload();
@@ -47,7 +56,7 @@ $('#all-notes').on(
 
 let noteTally;
 
-setNotes = () => {
+const setNotes = () => {
   noteTally = 0;
   $('#all-notes').empty();
   allNotes.map((note) => {
@@ -66,7 +75,7 @@ setNotes = () => {
   localStorage.setItem(1, allNotes);
 };
 
-getAllNotes = () => {
+const getAllNotes = () => {
   allNotes = localStorage.getItem(1) ? localStorage.getItem(1).split(',') : [];
   for (let i = 0; i < allNotes.length; i++) {
     let allScreen = document.getElementById('all-notes');
